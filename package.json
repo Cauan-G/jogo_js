@@ -1,0 +1,23 @@
+{
+  "name": "jogo_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js localhost 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.6",
+    "@babel/core": "^7.25.2",
+    "@babel/node": "^7.25.0",
+    "@babel/preset-env": "^7.25.4",
+    "nodemon": "^3.1.4"
+  }
+}
