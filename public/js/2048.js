@@ -228,8 +228,8 @@ function addColours(){
     for (let i = 0; i < divs.length; i++){
         let value = parseInt(divs[i].innerHTML);
         if (value === 0) {
-            divs[i].style.backgroundColor = 'black';
-            divs[i].style.color = 'black';
+            divs[i].style.backgroundColor = '#111';
+            divs[i].style.color = '#111';
         } else {
             let color = `hsl(${Math.log2(value) * 25}, 50%, 60%)`;
             divs[i].style.backgroundColor = color;

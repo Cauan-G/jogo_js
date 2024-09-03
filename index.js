@@ -13,6 +13,10 @@ app.get('/2048', (req, res) => {
     res.sendFile(`${basePath}/2048.html`)
 })
 
+app.get('/snake_game', (req, res) => {
+    res.sendFile(`${basePath}/snake_game.html`)
+})
+
 app.get('/', (req, res) => {
     res.sendFile(`${basePath}/index.html`)
 })
