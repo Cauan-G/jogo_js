@@ -11,7 +11,7 @@
 body{
     background-color: #191919;
     color: white;
-    height: 95vh;
+    height: 100vh;
 }
 
 .title{
@@ -19,18 +19,16 @@ body{
     justify-content: center;
     align-items: center;
 
-    height: 20%;
+    height: 10%;
 
-
-    margin-bottom: 25px;
 }
 
-.content{
+.container{
     height: 100vh;
 }
 
 .info{
-    height: 80%;
+    height: 90%;
     width: 100%;
 
     display: flex;
@@ -52,9 +50,24 @@ body{
 
     text-align: center;
 
-    border: 2px solid white;
-    border-radius: 6px;
+    /* border: 2px solid #111; */
+    border-radius: 24px;
 
+    background-color: #29292977;
+
+}
+
+.g2048 h3, .Snake h3, .Tetris h3, .TempleEscape h3{
+
+    height: 20%;
+
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+
+    margin-top: 10px;
+    
+    font-size: 1.8em;
 }
 
 img{
@@ -64,8 +77,19 @@ img{
     margin-top: 3px;
 }
 
+a {
+    color: white;
+    font-style: normal;
+    text-decoration: none; 
 
-.g2048:hover, .Snake:hover, .Tetris:hover, .TempleRun:hover{
+}
+
+a:visited { 
+    text-decoration: none; 
+} 
+
+
+.g2048:hover, .Snake:hover, .Tetris:hover, .TempleEscape:hover{
     cursor: pointer;
     -webkit-filter: brightness(70%);
     -webkit-transition: all 1s ease;
