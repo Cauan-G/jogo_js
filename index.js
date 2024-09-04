@@ -17,6 +17,10 @@ app.get('/snake_game', (req, res) => {
     res.sendFile(`${basePath}/snake_game.html`)
 })
 
+app.get('/tetris', (req, res) => {
+    res.sendFile(`${basePath}/tetris.html`)
+})
+
 app.get('/', (req, res) => {
     res.sendFile(`${basePath}/index.html`)
 })
