@@ -33,6 +33,8 @@ const colors = [
     '#ffd700',
 ];
 
+const audio = new Audio("/assets/audio.mp3");
+
 // Setup function called once at beginning
 function setup() {
     createCanvas(600, 540);
@@ -372,6 +374,8 @@ function analyzeGrid() {
     let score = 0;
     while (checkLines()) {
         score += 100;
+        audio.play();
+
         linesCleared += 1;
         if (linesCleared % 10 === 0) {
             currentLevel += 1;
