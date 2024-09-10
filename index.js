@@ -21,6 +21,10 @@ app.get('/tetris', (req, res) => {
     res.sendFile(`${basePath}/tetris.html`)
 })
 
+app.get('/templeEscape', (req, res) => {
+    res.sendFile(`${basePath}/templeEscape.html`)
+})
+
 app.get('/', (req, res) => {
     res.sendFile(`${basePath}/index.html`)
 })

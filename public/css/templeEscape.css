@@ -1,0 +1,51 @@
+
+* {
+    font-family: "Poppings", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #111;
+    color: white;
+}
+
+a {
+    color: white;
+    font-style: normal;
+    text-decoration: none; 
+
+}
+
+a:visited { 
+    text-decoration: none; 
+} 
+
+.info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 18px;
+    color: white;
+}
+
+.info div {
+    margin-bottom: 10px;
+}
+
+
+.controls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 16px;
+    color: white;
+}
+
+.controls div {
+    margin-bottom: 5px;
+}
