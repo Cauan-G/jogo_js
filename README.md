@@ -1,4 +1,4 @@
-###game_js
+#game_js
 This project was developed to test front-end skills and explore the use of local storage for saving the highest scores of games played. It consists of four simple, yet popular games: 2048, Tetris, Snake, and Temple Escape.
 
 The implementation was done using JavaScript, with animations and movements managed through canvas and div elements. Local storage was integrated to persist the highest scores, allowing users to track their progress across game sessions.
@@ -13,7 +13,7 @@ Temple Escape: In this game, your character must swing from ropes to escape from
 
 #
 
-###jogo_js
+#jogo_js
 Este projeto foi desenvolvido para testar habilidades de front-end e explorar o uso de local storage para salvar as maiores pontuações dos jogos jogados. O projeto é composto por quatro jogos simples, porém populares: 2048, Tetris, Snake e Temple Escape.
 
 A implementação foi feita utilizando JavaScript, com animações e movimentos controlados por elementos canvas e div. O local storage foi integrado para persistir as maiores pontuações, permitindo que o usuário acompanhe seu progresso entre as sessões de jogo.
