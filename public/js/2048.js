@@ -49,6 +49,10 @@ function undoMove() {
         }
         score = lastScore;
         $('#score').text(`${score}`);
+        if(!localStorage.getItem("max-score-2048") || localStorage.getItem("max-score-2048") < score){
+            localStorage.removeItem("max-score-2048")
+            localStorage.setItem("max-score-2048", score);
+        }
         addColours();
     }
 }
@@ -195,7 +199,12 @@ function combineRow() {
             divs[i].innerHTML = combinedTotal;
             divs[i + 1].innerHTML = 0;
             score += combinedTotal;
+            
             $('#score').text(`${score}`);
+            if(!localStorage.getItem("max-score-2048") || localStorage.getItem("max-score-2048") < score){
+                localStorage.removeItem("max-score-2048")
+                localStorage.setItem("max-score-2048", score);
+            }
         }
     }
     checkForWin();
@@ -209,6 +218,10 @@ function combineColumn() {
             divs[i + width].innerHTML = 0;
             score += combinedTotal;
             $('#score').text(`${score}`);
+            if(!localStorage.getItem("max-score-2048") || localStorage.getItem("max-score-2048") < score){
+                localStorage.removeItem("max-score-2048")
+                localStorage.setItem("max-score-2048", score);
+            }
         }
     }
     checkForWin();

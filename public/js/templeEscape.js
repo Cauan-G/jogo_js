@@ -5,32 +5,66 @@ const rope = "#a6491b"
 const character = "#ff6b21"
 
 let backgroundImage = new Image();
-backgroundImage.src = '/img/backgroundTemple.png'; // Substitua pelo caminho da sua imagem
+backgroundImage.src = '/img/backgroundTemple.png'; 
 
 // Função para desenhar a imagem de fundo e os outros elementos
 function drawBackground() {
-    // Desenhe a imagem de fundo quando estiver carregada
+
     backgroundImage.onload = function() {
-        // Desenhar a imagem de fundo
+
         ctx.drawImage(backgroundImage, 0, 0, canvasEl.width, canvasEl.height);
 
-        // Agora você pode desenhar outros elementos no canvas
         drawElements();
     };
 }
 
+function drawStickFigure(x, y) {
+    // Cabeça
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, Math.PI * 2, true); 
+    ctx.strokeStyle = character;
+    ctx.stroke();
+
+    // Corpo
+    ctx.beginPath();
+    ctx.moveTo(x, y + 10);
+    ctx.lineTo(x, y + 30); 
+    ctx.stroke();
+
+    // Braço esquerdo
+    ctx.beginPath();
+    ctx.moveTo(x, y + 15); 
+    ctx.lineTo(x - 10, y + 25); 
+    ctx.stroke();
+
+    // Braço direito
+    ctx.beginPath();
+    ctx.moveTo(x, y + 15); 
+    ctx.lineTo(x + 10, y + 25); 
+    ctx.stroke();
+
+    // Perna esquerda
+    ctx.beginPath();
+    ctx.moveTo(x, y + 30); 
+    ctx.lineTo(x - 10, y + 45); 
+    ctx.stroke();
+
+    // Perna direita
+    ctx.beginPath();
+    ctx.moveTo(x, y + 30); 
+    ctx.lineTo(x + 10, y + 45); 
+    ctx.stroke();
+}
+
 function drawElements() {
-    // Exemplo de desenho de uma linha e um personagem
+
     ctx.fillStyle = rope;
-    ctx.fillRect(450, 120, 3, 200);
+    ctx.fillRect(450, 10, 3, 300);  
 
     let charX = 100;
     let charY = 300;
 
-    ctx.beginPath();
-    ctx.arc(charX, charY, 10, 0, Math.PI * 2, true);
-    ctx.strokeStyle = character;
-    ctx.stroke();
+    drawStickFigure(charX, charY);
 }
 
 // Iniciar o desenho do fundo
@@ -58,29 +92,24 @@ ctx.lineCap = "round";
 
 // Função de animação
 function animateLine() {
-    ctx.clearRect(0, 0, canvasEl.width, canvasEl.height); 
+    ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+    ctx.drawImage(backgroundImage, 0, 0, canvasEl.width, canvasEl.height);
 
-    // Redesenha a linha estática
     ctx.fillStyle = rope;
-    ctx.fillRect(450, 120, 3, 200);
+    ctx.fillRect(450, 10, 3, 300);
 
     charX = bottomX + 20;
 
-    // Desenha o personagem
-    ctx.beginPath();
-    ctx.arc(charX, charY, 10, 0, Math.PI * 2, true);
-    ctx.strokeStyle = character;
-    ctx.stroke();
+    drawStickFigure(charX, charY);
 
     ctx.beginPath();
-    ctx.moveTo(lineX, 120);
-    ctx.lineTo(bottomX, 320); // Ponto inferior que se move
+    ctx.moveTo(lineX, 10);  
+    ctx.lineTo(bottomX, 310);
     ctx.strokeStyle = rope;
     ctx.stroke();
 
     bottomX += direction * speed;
 
-    // Inverte a direção se atingir os limites
     if (bottomX >= lineX + maxMovement || bottomX <= lineX - maxMovement) {
         direction *= -1;
     }
@@ -90,12 +119,16 @@ function animateLine() {
     }
 }
 
+
 animateLine();
 
 // Função que desenha a animação da derrota (queda do personagem)
-function drawDefeat(){
+
+function drawDefeat() {
     function fall() {
-        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height); 
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+        ctx.drawImage(backgroundImage, 0, 0, canvasEl.width, canvasEl.height);
+
 
         ctx.fillStyle = rope;
         ctx.fillRect(450, 120, 3, 200);
@@ -106,17 +139,20 @@ function drawDefeat(){
         ctx.strokeStyle = rope;
         ctx.stroke();
 
-        ctx.beginPath();
-        ctx.arc(charX, charY, 10, 0, Math.PI * 2, true);
-        ctx.strokeStyle = character;
-        ctx.stroke();
+        drawStickFigure(charX, charY);
 
         charY += fallSpeed;
 
         if (charY < canvasEl.height - 10) {
             requestAnimationFrame(fall);
         } else {
-            alert(`Personagem caiu! Pontuação final: ${score}`);
+            if(!localStorage.getItem("max-score-templeEscape") || localStorage.getItem("max-score-templeEscape") < score){
+                localStorage.removeItem("max-score-templeEscape");
+                localStorage.setItem("max-score-templeEscape", score);
+            }
+            $('#final-score').text(score);
+            $('.menu-screen').css("display", "flex");
+
         }
     }
 
@@ -124,71 +160,66 @@ function drawDefeat(){
 }
 
 function drawMove() {
-    let startX = charX;  // Ponto inicial do personagem 
-    let startY = charY;  // Ponto inicial do personagem 
-    let endX = 450;      // Ponto final 
-    let peakY = 120;     // Ponto mais baixo do arco 
-    let duration = 100;  // Número de quadros para completar o movimento
-    let t = 0;           // Variável de tempo 
+    let startX = charX;
+    let startY = charY;
+    let endX = 450;
+    let peakY = 120;
+    let duration = 100;
+    let t = 0;
 
     function moveInArc() {
-        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height); 
+        ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+        ctx.drawImage(backgroundImage, 0, 0, canvasEl.width, canvasEl.height);
 
-        // Redesenha a linha estática
         ctx.fillStyle = rope;
-        ctx.fillRect(450, 120, 3, 200);
+        ctx.fillRect(450, 10, 3, 300);
 
-        // Redesenha a linha que se move 
         ctx.beginPath();
-        ctx.moveTo(lineX, 120);
-        ctx.lineTo(bottomX, 320);
+        ctx.moveTo(lineX, 10);
+        ctx.lineTo(bottomX, 310);
         ctx.strokeStyle = rope;
         ctx.stroke();
 
-        let progress = t / duration;  
-
+        let progress = t / duration;
         charX = startX + progress * (endX - startX);
+        charY = startY - (4 * peakY * progress * (1 - progress));
 
-        charY = startY - (4 * peakY * progress * (1 - progress)); 
+        drawStickFigure(charX, charY);
 
-        // Desenha o personagem
-        ctx.beginPath();
-        ctx.arc(charX, charY, 10, 0, Math.PI * 2, true);
-        ctx.strokeStyle = character;
-        ctx.stroke();
-
-        // Incrementa o tempo e verifica se o movimento deve continuar
         t++;
 
         if (t <= duration) {
             requestAnimationFrame(moveInArc);
-        } 
-        else {
-            moveStaticLine()
+        } else {
+            moveStaticLine();
         }
     }
 
     moveInArc();
 }
+
 function moveStaticLine() {
-    let startX = 450;      // Posição inicial da linha estática
-    let targetX = lineX;    // A posição onde a linha móvel está (inicial)
-    let duration = 50;     // Duração da animação
-    let t = 0;              // Tempo
+    let startX = 450;
+    let targetX = lineX;
+    let duration = 50;
+    let t = 0;
 
     function animateLineMove() {
         ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+        ctx.drawImage(backgroundImage, 0, 0, canvasEl.width, canvasEl.height);
 
         let progress = t / duration;
         let currentX = startX + progress * (targetX - startX);
 
         ctx.fillStyle = rope;
-        ctx.fillRect(currentX, 120, 3, 200);
+        ctx.fillRect(currentX, 10, 3, 300);
 
-        let charProgressX = currentX + 20;
+        drawStickFigure(currentX + 20, 300);
+
         ctx.beginPath();
-        ctx.arc(charProgressX, 300, 10, 0, Math.PI * 2, true);
-        ctx.strokeStyle = character;
+        ctx.moveTo(lineX, 10);
+        ctx.lineTo(bottomX, 310);
+        ctx.strokeStyle = rope;
         ctx.stroke();
 
         t++;
@@ -196,7 +227,6 @@ function moveStaticLine() {
         if (t <= duration) {
             requestAnimationFrame(animateLineMove);
         } else {
-            // Depois que a linha estática se mover completamente, redesenhar a linha
             resetMovingLine();
         }
     }
@@ -206,7 +236,7 @@ function moveStaticLine() {
 
 // Função para redesenhar a linha móvel
 function resetMovingLine() {
-    bottomX = lineX;  // Resetando a posição inicial da linha móvel
+    bottomX = lineX;  
 
     // Redesenha a linha móvel
     ctx.beginPath();
@@ -223,6 +253,9 @@ function control(e){
         if(bottomX > 200){
             score += 10;
             $('#score').text(score);
+            if(!localStorage.getItem("max-score-templeEscape") || localStorage.getItem("max-score-templeEscape") < score){
+                localStorage.setItem("max-score-templeEscape", score);
+            }
 
             if(score > 80){
                 speed = 10;
@@ -251,3 +284,7 @@ function control(e){
         }
     }
 }
+
+$('.btn-play').click(function(){
+    location.reload()
+})

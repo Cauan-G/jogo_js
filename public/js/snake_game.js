@@ -143,6 +143,10 @@ const gameOver = () => {
 
     $menu.css("display", "flex");
     $finalScore.text($score.text());
+    if(!localStorage.getItem("max-score-snake") || localStorage.getItem("max-score-snake") < $score.text()){
+        localStorage.removeItem("max-score-snake")
+        localStorage.setItem("max-score-snake", $score.text());
+    }
     $canvas.css("filter", "blur(2px)");
 };
 

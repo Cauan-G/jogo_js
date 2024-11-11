@@ -20,6 +20,17 @@
             <div>Score: <span id="score">0</span></div>
             <div>Level: <span id="level">1</span></div>
         </div>
+
+        <div class="menu-screen" style="display: none;">
+            <span class="game-over">Game Over</span>
+            <span class="final-score">Score: <span id="final-score">00</span></span>
+
+            <button class="btn-play">
+                <span class="material-symbols-outlined">play_circle</span>
+                Play Again
+            </button>
+        </div>
+        
         <div class="controls">
             <div>-> - Jump</div>
         </div>
@@ -27,13 +38,12 @@
         <div>
             <canvas id="screen" width="600" height="600"></canvas>
         </div>
-
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script src="/js/templeEscape.js"></script>
 
 </body>
+
 
 </html>

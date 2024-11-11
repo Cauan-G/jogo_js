@@ -129,6 +129,10 @@ function draw() {
     }
 
     $('#score').text(`${currentScore}`);
+    if(!localStorage.getItem("max-score-tetris") || localStorage.getItem("max-score-tetris") < currentScore){
+        localStorage.removeItem("max-score-tetris")
+        localStorage.setItem("max-score-tetris", currentScore);
+    }
     $('#level').text(`${currentLevel}`);
     $('#lines').text(`${linesCleared}`);
 }

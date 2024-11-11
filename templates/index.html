@@ -6,46 +6,47 @@
     <title>Home</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Pixelify+Sans:wght@400..700&family=Satisfy&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
     
     <div class="container">
         <div class="title">
-            <h1>GAMES</h1>
+            <h1>Choose Your Game</h1>
         </div>
         <div class="info">
-            <div class="g2048">
+            <div class="g2048 game-card">
                 <a href="/2048">
-                    <img src="/img/2048.jpg" alt="" href="/2048">
+                    <img src="/img/2048.jpg" alt="">
+                    <p>Max Score: <span id="max-score-2048"></span></p>
                     <h3>2048</h3>
                 </a>
             </div>
-            <div class="Snake">
+            <div class="Snake game-card">
                 <a href="/snake_game">
                     <img src="/img/snake.jpg" alt="">
+                    <p>Max Score: <span id="max-score-snake"></span></p>
                     <h3>Snake</h3>
                 </a>
             </div>
-            <div class="Tetris">
+            <div class="Tetris game-card">
                 <a href="/tetris">
-                
                     <img src="/img/tetris.png" alt="">
+                    <p>Max Score: <span id="max-score-tetris"></span></p>
                     <h3>Tetris</h3>
                 </a>
-
             </div>
-            <div class="TempleEscape">
+            <div class="TempleEscape game-card">
                 <a href="/templeEscape">
-                
                     <img src="/img/templeEscape.jpg" alt="">
+                    <p>Max Score: <span id="max-score-templeEscape"></span></p>
                     <h3>Temple Escape</h3>
                 </a>
-
             </div>
         </div>
     </div>
+    <script src="js/main.js"></script>
 
 </body>
 </html>
